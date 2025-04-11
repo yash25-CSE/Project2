@@ -1,0 +1,24 @@
+name: Java CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # This means the pipeline triggers when a commit is pushed to the main branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # GitHub will use an Ubuntu runner for this job.
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # This checks out the repository code.
+
+      - name: Set up Java JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'  # Use JDK version 11
+
+      - name: Build and Test
+        run: |
+          javac HelloWorld.java  # Compile your Java program
+          java HelloWorld  # Run your Java program
